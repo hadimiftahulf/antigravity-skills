@@ -113,13 +113,19 @@ graph TD
     
     Brainstorm --> API
     Brainstorm --> I18n
-    Refactor --> UX
     
-    %% All execution leads to review
+    %% DEFINITION OF DONE (The "No Skill Left Behind" Chain)
+    Refactor --> |Auto-Chain| Doc[Doc Architect]
+    Doc --> |Auto-Chain| UX
+    MigPlan --> |Auto-Chain| Perf
+    API --> |Auto-Chain| SecScan
+    DevOps --> |Auto-Chain| SecScan
+
+    %% All execution eventually leads to review
     Debug --> Critique
-    Refactor --> Critique
-    API --> Critique
-    MigPlan --> Critique
+    UX --> Critique
+    Perf --> Critique
+    SecScan --> Critique
     
     Critique --> Hallu
     Hallu --> Output

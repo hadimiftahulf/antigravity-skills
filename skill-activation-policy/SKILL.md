@@ -69,7 +69,14 @@ Plan selected → No re-evaluation unless user introduces new variable.
 ## 9. System Optimization Protocol 🚀
 Lean Mode default. No redundant layers. No governance stacking.
 
-## 10. Trigger Words
+## 10. Definition of Done (Auto-Chain) 🔗
+To ensure no skill is wasted, the following chains are **MANDATORY** for complex tasks:
+
+1.  **Post-Feature**: `refactor-code` -> `doc-architect` (Update README/ADR) -> `ux-polish`.
+2.  **Pre-Commit**: `security-scan` (Secret check) -> `output-discipline`.
+3.  **Post-Migration**: `optimize-perf` (Query check) -> `devops-architect` (Config check).
+
+## 11. Trigger Words
 | Skill | Keywords |
 | :--- | :--- |
 | `deep-audit` | "audit", "review architecture", "check layers" |
