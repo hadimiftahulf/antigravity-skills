@@ -34,7 +34,104 @@ git clone git@github.com:hadimiftahulf/antigravity-skills.git "$env:USERPROFILE\
 3.  **The Download**: The agent "reads" the specific `SKILL.md` file (e.g., `debug-protocol`), effectively "downloading" the expertise for that specific moment.
 4.  **The Execution**: The agent follows the strict step-by-step workflow defined in the skill, ensuring high-quality, consistent output.
 
+
 ---
+
+## 🧠 Skill Flow & Interconnection
+
+The following diagram visualizes how the 30 skills interact. The `meta-governor` is the central hub, ensuring no skill is isolated.
+
+```mermaid
+graph TD
+    %% Roles
+    User([User Request])
+    MetaGov{{Meta Governor}}
+    Context[Context Memory]
+    
+    %% Categories
+    subgraph Guardrails [Phase 0: Safety & Context]
+        Context --> |Check Constraints| Constraint[Constraint Enforcer]
+        Context --> |Clarify Ambiguity| Clarity[Clarification Enforcer]
+        Context --> |Check Confidence| Confidence[Confidence Calibrator]
+    end
+
+    subgraph Planning [Phase 1: Planning]
+        Plan{Complex Task?}
+        TaskOrch[Task Orchestrator]
+        Brainstorm[Brainstorm Feature]
+        MigPlan[Migration Planner]
+    end
+
+    subgraph Specialist [Phase 2: Analysis & Architecture]
+        Type{Request Type}
+        ArchReview[Arch Reviewer]
+        DeepAudit[Deep Audit]
+        BizAnalyst[Business Analyst]
+        SecScan[Security Scan]
+        Perf[Optimize Perf]
+    end
+
+    subgraph Execution [Phase 3: Execution]
+        Debug[Debug Protocol]
+        Refactor[Refactor Code]
+        API[API Connector]
+        DevOps[DevOps Architect]
+        Doc[Doc Architect]
+        I18n[I18n Localizer]
+        UX[UX Polish]
+    end
+
+    subgraph Review [Phase 4: Review & Delivery]
+        Critique[Self Critique]
+        Output[Output Discipline]
+        Indo[Indonesian Communicator]
+        Hallu[Hallucination Guard]
+    end
+
+    %% Flow Connections
+    User --> MetaGov
+    MetaGov --> |1. Health Check| Context
+    MetaGov --> |2. Guardrails| Guardrails
+    
+    Constraint --> Plan
+    Clarity --> Plan
+    Confidence --> Plan
+
+    Plan --> |Yes| TaskOrch
+    Plan --> |No| Type
+    TaskOrch --> Type
+
+    Type --> |Architecture| ArchReview
+    Type --> |Audit| DeepAudit
+    Type --> |Business Logic| BizAnalyst
+    Type --> |New Feature| Brainstorm
+    
+    %% Execution Flow
+    Type --> |Bug| Debug
+    Type --> |Cleanup| Refactor
+    Type --> |Migration| MigPlan
+    
+    Brainstorm --> API
+    Brainstorm --> I18n
+    Refactor --> UX
+    
+    %% All execution leads to review
+    Debug --> Critique
+    Refactor --> Critique
+    API --> Critique
+    MigPlan --> Critique
+    
+    Critique --> Hallu
+    Hallu --> Output
+    Output --> Indo
+    Indo --> |Final Response| User
+    
+    %% Feedback Loop
+    Indo -.-> |New Context| Context
+```
+
+---
+
 
 ## 📚 Skill Catalog
 
